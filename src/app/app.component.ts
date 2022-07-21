@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,21 @@ export class AppComponent {
   title = 'qr-scanner';
   qrResult:any
   popup='none';
+  data: any;
 
-  scanSuccessHandler(resultString:String){
+  constructor(private db: AngularFirestore) { }
+
+  async scanSuccessHandler(resultString:String){
     this.qrResult= resultString;
+    this.data = firstValueFrom(await this.db.collection('trial').doc('work').get());
+    this.data = (await this.data).data()
+    console.log(this.data);
     this.popup='block'
   }
 
   
 
-}
+    
+  }
+
+
