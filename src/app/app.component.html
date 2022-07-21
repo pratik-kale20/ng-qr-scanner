@@ -1,4 +1,11 @@
-<zxing-scanner (scanSuccess)="scanSuccessHandler($event)" ></zxing-scanner>
+<div class="scanner">
+
+  <zxing-scanner (scanSuccess)="scanSuccessHandler($event)"
+ ></zxing-scanner>
+
+</div>
+
+
 
 <section class="results" *ngIf="qrResult">
   <div>
@@ -7,3 +14,11 @@
   </div>
   <!-- <button mat-icon-button (click)="clearResult()">&times;</button> -->
 </section>
+
+<!-- popup -->
+
+
+  
+
+
+
