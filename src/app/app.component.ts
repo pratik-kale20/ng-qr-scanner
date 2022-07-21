@@ -12,21 +12,27 @@ export class AppComponent {
   qrResult:any
   // popup='none';
   data: any;
+  field: any;
+  object:any;
 
-  @ViewChild('click') click!: ElementRef;
 
 
-  public toggleb = <HTMLAudioElement>document.getElementById("popButton");
-  subContent: any;
 
   constructor(private db: AngularFirestore) { }
 
   async scanSuccessHandler(resultString:String){
     this.qrResult= resultString;
-    this.data = firstValueFrom(await this.db.collection('trial').doc('work').get());
+    this.data = firstValueFrom(await this.db.collection('trial').doc('invited').get());
     this.data = (await this.data).data()
-    console.log(this.data);
-    this.subContent.nativeElement.click();
+    this.object = this.data
+    console.log();
+    this.data = this.data["123_"+this.qrResult]
+    this.data["attended"] = "true";
+    this.data["status"] = "attended"
+    this.field = "123_"+this.qrResult
+    this.object[this.field] = this.data
+    await this.db.collection('trial').doc('invited').update(this.object);
+    document.getElementById("popButton")!.click();
 
     // this.popup='block'
   }
@@ -37,10 +43,10 @@ export class AppComponent {
 // myModal.addEventListener('shown.bs.modal', function () {
 //   myInput.focus()
 // })
-  
 
 
-    
+
+
   }
 
 
