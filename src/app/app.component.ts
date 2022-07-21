@@ -10,6 +10,7 @@ import { firstValueFrom } from 'rxjs';
 export class AppComponent {
   title = 'qr-scanner';
   qrResult:any
+  popup='none';
   data: any;
 
   constructor(private db: AngularFirestore) { }
@@ -19,6 +20,12 @@ export class AppComponent {
     this.data = firstValueFrom(await this.db.collection('trial').doc('work').get());
     this.data = (await this.data).data()
     console.log(this.data);
+    this.popup='block'
   }
 
-}
+  
+
+    
+  }
+
+
