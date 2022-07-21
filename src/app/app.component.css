@@ -1,3 +1,4 @@
+
 :host zxing-scanner::ng-deep video{
   /* padding: 0.5rem;
   border: 2px dotted black; */
@@ -8,7 +9,7 @@
 
 
 .scanner{
-    min-height: 90vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;

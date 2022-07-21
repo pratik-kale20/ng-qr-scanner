@@ -1,37 +1,26 @@
+
+<div class="title text-center mt-4">
+  <img src="../assets/30th.svg" height="50" alt="30th">
+  <h2 class="mt-2">Foundation Day</h2>
+</div>
+
+<header>
+  <div>
+    <select (change)="onDeviceSelectChange($any($event.target).value)">
+      <option value="" [selected]="!currentDevice">No Device Selected</option>
+      <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{ device.label }}</option>
+        </select>
+  </div>
+</header>
+
 <div class="scanner">
-  <zxing-scanner (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
-
+  <zxing-scanner *ngIf="hidden" #scanner [device]="currentDevice" [enable]=true (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
 </div>
 
 
-<section class="results" *ngIf="qrResult">
-  <div>
-    <small>Result</small>
-    <strong>{{ qrResult }}</strong>
-  </div>
-  <!-- <button mat-icon-button (click)="clearResult()">&times;</button> -->
-</section>
 
-<!-- popup -->
-
-<!-- <div class="popUp" [ngStyle]="{'display': popup}">
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-    </svg>
-  </div>
-  <div>
-    <p>verified</p>
-  </div>
-</div>
-
-
-   -->
-
-
-   <!-- Button trigger modal -->
-<button type="button" id="popButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+<!-- Button trigger modal -->
+<button type="button" id="popButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">modal
 </button>
 
 <!-- Modal -->
@@ -39,7 +28,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center flex-column">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" (click)="scannerEvent()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div>
           <img  src="../assets/78619-verified.gif" height="180" alt="logo">
         </div>
@@ -53,4 +42,9 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="text-center">
+  <img class="me-3" src="../assets/Sumeet_Group_Logo_2.svg" height="90" alt="logo">
+  <img src="../assets/logo.svg" height="90" alt="logo">
 </div>
