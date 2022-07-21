@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'qr-scanner';
+  qrResult:any
 
-  scanSuccessHandler(event: any){
-    alert('Scan Success')
+ 
+
+  scanSuccessHandler(resultString:String){
+    this.qrResult= resultString;
   }
 }
