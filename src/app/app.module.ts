@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ModalModule } from 'ng2-modal-module';
 import {AngularFireModule} from '@angular/fire/compat'
@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     ZXingScannerModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]
