@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'qr-scanner';
   qrResult:any
+  data: any;
 
- 
+  constructor(private db: AngularFirestore) { }
 
-  scanSuccessHandler(resultString:String){
+  async scanSuccessHandler(resultString:String){
     this.qrResult= resultString;
+    this.data = firstValueFrom(await this.db.collection('trial').doc('work').get());
+    this.data = (await this.data).data()
+    console.log(this.data);
   }
+
 }
