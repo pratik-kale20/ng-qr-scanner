@@ -17,10 +17,6 @@
 
   /* pop up css */
 
-  .popUp{
-    background-color: blueviolet;
-    margin: auto;
-    width: 20vh;
-    display: flex;
-    justify-content: center;
+  #popButton{
+display: none;
   }
