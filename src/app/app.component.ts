@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'qr-scanner';
   qrResult:any
-
- 
+  popup='none';
 
   scanSuccessHandler(resultString:String){
     this.qrResult= resultString;
+    this.popup='block'
   }
+
+  
+
 }
