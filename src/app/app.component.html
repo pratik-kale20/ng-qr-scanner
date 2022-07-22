@@ -3,15 +3,15 @@
   <img src="../assets/30th.svg" height="40" alt="30th">
   <img class="mt-2 mb-1" src="../assets/Asset_2.svg" height="25" alt="30th">
 </div>
-<div class="video-options text-center">
+<!-- <div class="video-options text-center">
   <select name="" id="" class="custom-select form-select w-75">
-      <option value="">Select camera</option>
+      <option value="" >Select camera</option>
   </select>
-</div>
+</div> -->
 
 <div id="div1"></div>
 <div class="scanner" id="div2">
-  <zxing-scanner *ngIf="hidden" #scanner [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+  <zxing-scanner *ngIf="hidden" #scanner [device]="currentDevice" [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
 </div>
 
 

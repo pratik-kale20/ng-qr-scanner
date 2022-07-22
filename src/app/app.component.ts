@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { firstValueFrom } from 'rxjs';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,9 +20,10 @@ export class AppComponent {
   field: any;
   object:any;
   hidden=true
+  currentDevice : any
 
   ngOnInit(){
-    this.getCameraSelection();
+
   }
 
   constructor(private db: AngularFirestore) { }
@@ -49,15 +52,6 @@ export class AppComponent {
     }
 
     }
-
-    getCameraSelection = async () => {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const videoDevices = devices.filter(device => device.kind === 'videoinput');
-      const options = videoDevices.map(videoDevice => {
-        return `<option value="${videoDevice.deviceId}">${videoDevice.label}</option>`;
-      });
-      document.querySelector('.video-options>select')!.innerHTML = options.join('');
-    };
     scannerEvent(){
       this.hidden=true
     }
