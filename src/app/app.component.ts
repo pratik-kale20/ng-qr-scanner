@@ -11,15 +11,13 @@ import { firstValueFrom } from 'rxjs';
 export class AppComponent {
   @ViewChild('scanner')
   scanner!:ZXingScannerComponent
+
   title = 'qr-scanner';
   qrResult:any
   data: any;
   field: any;
   object:any;
   hidden=true
-  hasdevices: boolean = false;
-  availableDevices : MediaDeviceInfo[]=[]
-  currentDevice: MediaDeviceInfo | undefined;
 
 
   constructor(private db: AngularFirestore) { }
@@ -33,6 +31,12 @@ export class AppComponent {
     this.data = (await this.data).data()
     this.object = this.data
     this.data = this.data["123_"+this.qrResult]
+    console.log(this.data)
+    if(this.data==undefined){
+      console.log("Denied");
+      document.getElementById("denyButton")!.click();
+    }
+    else{
     this.data["attended"] = "true";
     this.data["status"] = "attended"
     this.field = "123_"+this.qrResult
@@ -41,22 +45,10 @@ export class AppComponent {
     document.getElementById("popButton")!.click();
     }
 
+    }
+
     scannerEvent(){
       this.hidden=true
-    }
-
-    ngOnInit():void{
-      this.scanner.camerasFound.subscribe((devices:MediaDeviceInfo[])=>{this.hasdevices=true
-      this.availableDevices=devices});
-
-      this.scanner.camerasNotFound.subscribe(()=>this.hasdevices=false);
-      // this.scanner.scanComplete.subscribe((result:Result)=>this.qrResult=result);
-    }
-
-    onDeviceSelectChange(selectedValue: string) {
-      console.debug('Selection changed: ', selectedValue);
-      // this.currentDevice = this.scanner.getDeviceById(selectedValue);
-      this.currentDevice=this.availableDevices.find(x => x.deviceId === selectedValue);
     }
 
     }
