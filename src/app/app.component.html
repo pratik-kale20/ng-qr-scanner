@@ -1,13 +1,17 @@
 
-<div class="title text-center mt-4 d-flex flex-column">
-  <img src="../assets/30th.svg" height="50" alt="30th">
+<div class="title text-center mt-3 d-flex flex-column">
+  <img src="../assets/30th.svg" height="40" alt="30th">
   <img class="mt-2 mb-1" src="../assets/Asset_2.svg" height="25" alt="30th">
+</div>
+<div class="video-options text-center">
+  <select name="" id="" class="custom-select form-select w-75">
+      <option value="">Select camera</option>
+  </select>
 </div>
 
 <div id="div1"></div>
 <div class="scanner" id="div2">
-  <zxing-scanner *ngIf="hidden" #scanner (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
-
+  <zxing-scanner *ngIf="hidden" #scanner [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
 </div>
 
 
@@ -15,8 +19,6 @@
   <img class="me-3" src="../assets/Sumeet_Group_Logo_2.svg" height="90" alt="logo">
   <img src="../assets/logo.svg" height="90" alt="logo">
 </div>
-
-
 
 
 <button type="button" id="popButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">modal

@@ -7,6 +7,10 @@
   object-fit: contain;
 }
 
+.custom-select{
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* .scanner{
     min-height: 45vh;
