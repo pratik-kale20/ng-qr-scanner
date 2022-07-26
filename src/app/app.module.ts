@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { ModalModule } from 'ng2-modal-module';
 import {AngularFireModule} from '@angular/fire/compat'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
