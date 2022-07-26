@@ -39,9 +39,9 @@ export class AppComponent {
       console.log("Denied");
       document.getElementById("denyButton")!.click();
     }
-    else if(this.data["accepted"] != "rejected"){
-    // this.data["attended"] = "true";
-    // this.data["status"] = "attended"
+    else if(this.data["accepted"] != "rejected" ){
+    this.data["attended"] = "true";
+    this.data["status"] = "attended"
     this.field = "123_"+this.qrResult
     this.object[this.field] = this.data
     await this.db.collection('trial').doc('invited').update(this.object);
