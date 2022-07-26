@@ -12,8 +12,9 @@
 <div id="div1"></div>
 <div class="scanner" id="div2">
   <zxing-scanner *ngIf="hidden" #scanner [device]="currentDevice" [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+  <img src="../assets/loading.gif" *ngIf="!hidden" alt="">
 </div>
-  
+
 
 <div class="logo text-center">
   <img class="me-3" src="../assets/Sumeet_Group_Logo_2.svg" height="90" alt="logo">
