@@ -44,6 +44,10 @@
     background-size: 20px 20px;
   }
   /* pop up css */
+  .btn-custom{
+    background-color: #3F6BB0;
+    color: white;
+  }
 
   #popButton{
     visibility:hidden;
@@ -52,6 +56,4 @@
     visibility:hidden;
   }
 
-
-/* scanner border */
 

@@ -3,31 +3,62 @@
   <img src="../assets/30th.svg" height="40" alt="30th">
   <img class="mt-2 mb-1" src="../assets/Asset_2.svg" height="25" alt="30th">
 </div>
-<!-- <div class="video-options text-center">
-  <select name="" id="" class="custom-select form-select w-75">
-      <option value="" >Select camera</option>
-  </select>
-</div> -->
+
 
 <div id="div1"></div>
-<div class="scanner" id="div2">
-  <zxing-scanner *ngIf="hidden" #scanner [device]="currentDevice" [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
-  <img src="../assets/loading.gif" *ngIf="!hidden" alt="">
+<div class="scanner" *ngIf="hidden" id="div2">
+  <zxing-scanner #scanner [device]="currentDevice" [autofocusEnabled]="true" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+</div>
+<div  class="text-center" >
+  <img src="../assets/loading.gif" *ngIf="loader" alt="">
 </div>
 
 
-<div class="logo text-center">
+  <div *ngIf="success" class="modal-dialog modal-dialog-centered" data-keyboard="false" data-backdrop="static">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center flex-column">
+        <div>
+          <img  src="../assets/78619-verified.gif" height="180" alt="logo">
+        </div>
+        <div class="d-flex justify-content-center p-0">
+          <p class="fs-1 fw-bold">VERIFIED</p>
+         </div>
+         <button type="button" class="btn btn-custom w-50 text-center" (click)="goNext()">SCAN NEXT</button>
+      </div>
+    </div>
+  </div>
+
+  <div  *ngIf="fail" class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center flex-column">
+        <div>
+          <img  src="../assets/deny.gif" height="180" alt="logo">
+        </div>
+        <div class="d-flex justify-content-center align-items-center flex-column p-0">
+          <p class="fs-1 fw-bold m-0">DENIED</p>
+          <p *ngIf="scanned">This Qr Code has already been scanned</p>
+          <p class="">Please Try Again!</p>
+         </div>
+         <button type="button" class="btn btn-custom w-50 text-center mb-3" (click)="goNext()">SCAN NEXT</button>
+      </div>
+      </div>
+  </div>
+
+
+
+
+<div class="logo text-center fixed-bottom mb-4">
   <img class="me-3" src="../assets/Sumeet_Group_Logo_2.svg" height="90" alt="logo">
   <img src="../assets/logo.svg" height="90" alt="logo">
 </div>
 
 
-<button type="button" id="popButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">modal
+<button type="button" id="popButton" class="btn btn-primary" data-keyboard="false" data-backdrop="static" data-bs-toggle="modal" data-bs-target="#exampleModal">modal
 </button>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-  <div class="modal-dialog modal-dialog-centered">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="false">
+  <div class="modal-dialog modal-dialog-centered" data-keyboard="false" data-backdrop="static">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center flex-column">
         <button type="button" (click)="scannerEvent()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -44,18 +75,12 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
 
-
-
-<button type="button" id="denyButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">modal
-</button>
-
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+<!-- <div class="modal fade" id="exampleModal1" tabindex="-1" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center flex-column">
@@ -73,7 +98,5 @@
       </div>
     </div>
   </div>
-</div>
-
-
+</div> -->
 
